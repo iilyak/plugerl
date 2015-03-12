@@ -85,3 +85,9 @@ handle_error(Function, Reason, Args, State) ->
 - iterate - call passed function for every handler. There is also support for quick exit
 - handle - call every handler until we get `{{reply, Rest}, State}` or `{{error, Reason}, State}`
 - funout - more efficient `call` without an ability to access `state`
+
+# Architecture
+
+![plugerl](https://cloud.githubusercontent.com/assets/9804420/6623984/ac9b8472-c8a3-11e4-9632-235cb495839b.jpg)
+
+[source](https://github.com/iilyak/plugerl/wiki/architecture.uml)
