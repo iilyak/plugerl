@@ -12,18 +12,12 @@ Here is an example of a simple plugin:
 -module(myapp_plug).
 
 behaviour_info() ->
-    [
-     %% your callbacks (notice that arity is incremented to accommodate State)
-     {foo, 4},
-     {bar, 5},
-     {baz, 3},
-
-     %% mandatory callbacks
-     {init, 1},
-     {terminate, 3},
-     {handle_error, 2},
-     {handle_info, 2}
-    ].
+    plugerl:define_callbacks([
+         %% notice that arity is incremented to accommodate State
+         {foo, 4},
+         {bar, 5},
+         {baz, 3}
+    ]).
 
 register(Engine) ->
     plugerl:register_plugin(Engine, ?MODULE).

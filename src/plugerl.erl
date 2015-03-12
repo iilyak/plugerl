@@ -10,6 +10,7 @@
 -export([start_plugin/2, stop_plugin/2]).
 -export([register_handler/5, unregister_handler/3]).
 
+-export([define_callbacks/1]).
 -export([plugins/1]).
 -export([handlers/2]).
 
@@ -31,6 +32,14 @@ stop(Engine) when is_atom(Engine) ->
     stop(Sup);
 stop(Sup) when is_pid(Sup) ->
     plugerl_sup:stop(Sup).
+
+define_callbacks(Callbacks) ->
+    [
+        {init, 1},
+        {terminate, 2},
+        {handle_error, 4},
+        {handle_info, 2}
+    ] ++ Callbacks.
 
 register_plugin(Engine, Type) ->
     register_plugin(Engine, Type, []).
