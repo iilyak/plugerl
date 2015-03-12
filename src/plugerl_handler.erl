@@ -25,7 +25,7 @@
 -export([notify/3]).
 -export([handle/4]).
 -export([iterate/5]).
--export([funout/3]).
+-export([fanout/3]).
 
 %% ------------------------------------------------------------------
 %% gen_server Function Exports
@@ -69,7 +69,7 @@ handle(Server, Function, Default, Args) ->
 iterate(Server, Function, Args, Acc, Fun) ->
     maybe_call(whereis(Server), Acc, {iterate, Function, Args, Acc, Fun}).
 
-funout(Handlers, Function, Args) ->
+fanout(Handlers, Function, Args) ->
     [call_handler(Module, Function, Args) || Module <- Handlers].
 
 %% ------------------------------------------------------------------

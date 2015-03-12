@@ -30,7 +30,7 @@
 -export([notify/3]).
 -export([handle/4]).
 -export([iterate/4, iterate/5]).
--export([funout/4]).
+-export([fanout/4]).
 
 %% ------------------------------------------------------------------
 %% Public API Function Definitions
@@ -102,9 +102,9 @@ iterate(Type, Function, Args, Fun) ->
 iterate(Type, Function, Args, Acc, Fun) ->
     plugerl_handler:iterate(Type, Function, Args, Acc, Fun).
 
-funout(Engine, Type, Function, Args) ->
+fanout(Engine, Type, Function, Args) ->
     Handlers = plugerl_registry:handlers(Engine, Type),
-    plugerl_handler:funout(Handlers, Function, Args).
+    plugerl_handler:fanout(Handlers, Function, Args).
 
 
 plugins(Engine) ->

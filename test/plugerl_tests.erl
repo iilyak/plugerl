@@ -57,7 +57,7 @@ dispatch_test_() ->
         fun ensure_can_notify/1,
         fun ensure_can_handle/1,
         fun ensure_can_iterate/1,
-        fun ensure_can_funout/1,
+        fun ensure_can_fanout/1,
         fun ensure_can_handle_info/1
     ],
     {
@@ -308,9 +308,9 @@ ensure_can_iterate(_) ->
         ?assertMatch(undefined, get_errors(handler_bar))
     end).
 
-ensure_can_funout(_) ->
+ensure_can_fanout(_) ->
     ?_test(begin
-        Result = plugerl:funout(test_plug, ?MODULE, add, [5]),
+        Result = plugerl:fanout(test_plug, ?MODULE, add, [5]),
         ?assertMatch([7, 6], Result),
         ?assertMatch(undefined, get_errors(handler_foo)),
         ?assertMatch(undefined, get_errors(handler_bar))
