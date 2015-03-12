@@ -83,7 +83,7 @@ handle_error(Function, Reason, Args, State) ->
 - call - call every handler and wait while all of them finish
 - notify - send a message to every handler and keep going
 - iterate - call passed function for every handler. There is also support for quick exit
-- handle - call every handler until we get `{{reply, Rest}, State}` or `{{error, Reason}, State}`
+- handle - call every handler until we get `{{reply, Result}, State}` or `{{error, Reason}, State}`
 - fanout - more efficient `call` without an ability to access `state`
 
 # Architecture
