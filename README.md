@@ -71,6 +71,9 @@ bar(A, B, C, D, State) ->
 terminate(Reason, State) ->
     ok.
 
+handle_info(_Msg, State) ->
+    {noreply, State}.
+
 handle_error(Function, Reason, Args, State) ->
     ok.
 ```
