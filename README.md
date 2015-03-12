@@ -47,13 +47,13 @@ Below is an example of simple handler
 -module(myapp_plug_vendor).
 -behaviour(myapp_plug).
 
+-export([init/1, terminate/2, handle_error/4, handle_info/2]).
+
+
 -export([
-    {foo, 4},
-    {bar, 5},
-    {init, 1},
-    {terminate, 3},
-    {handle_error, 2},
-    {handle_info, 2}]).
+    foo/4,
+    bar/5
+]).
 
 register(Args, Options) -> %% called from app module
     plugerl:register_handler(myapp_plug, ?MODULE, Args, Options).
