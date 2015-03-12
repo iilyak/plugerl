@@ -67,11 +67,11 @@ stop_plugin(Engine, Type) ->
     end.
 
 register_handler(Engine, Type, Module, Args, Options) ->
-    plugerl_registry:register_handler(Engine, Type, Module, Args, Options),
+    true = plugerl_registry:register_handler(Engine, Type, Module, Args, Options),
     plugerl_handler:start_handler(Type, Module, self()).
 
 unregister_handler(Engine, Type, Module) ->
-    plugerl_registry:unregister_handler(Engine, Type, Module),
+    true = plugerl_registry:unregister_handler(Engine, Type, Module),
     plugerl_handler:stop_handler(Type, Module),
     ok.
 

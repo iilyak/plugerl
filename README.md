@@ -11,7 +11,9 @@ Here is an example of a simple plugin:
 ```erlang
 -module(myapp_plug).
 
-behaviour_info() ->
+-export([behaviour_info/1, register/1, start/2, foo/3, bar/4, baz/2]).
+
+behaviour_info(callbacks) ->
     plugerl:define_callbacks([
          %% notice that arity is incremented to accommodate State
          {foo, 4},
@@ -22,7 +24,7 @@ behaviour_info() ->
 register(Engine) ->
     plugerl:register_plugin(Engine, ?MODULE).
 
-start_link(Engine, Args) -> %% called from supervidor
+start(Engine, Args) ->
     plugerl:start_plugin(Engine, Args)
 
 foo(A, B, C) ->
